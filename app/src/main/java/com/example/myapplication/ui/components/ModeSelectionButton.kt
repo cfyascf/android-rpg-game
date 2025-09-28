@@ -21,7 +21,7 @@ fun ModeSelectionButton(
     modifier: Modifier = Modifier
 ) {
     val containerColor = if (isSelected) GoldColor else DarkBrownColor
-    val contentColor = if (isSelected) DarkBrownColor else ParchmentColor
+    val contentColor = if (isSelected) ParchmentColor else ParchmentColor
     val border = if (isSelected) BorderStroke(2.dp, DarkBrownColor) else null
 
     Button(

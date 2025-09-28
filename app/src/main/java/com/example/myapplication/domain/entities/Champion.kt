@@ -1,24 +1,21 @@
 package com.example.myapplication.domain.entities
 
 import com.example.myapplication.domain.abstractions.Archetype
-import com.example.myapplication.domain.abstractions.IArchetypeFactory
 import com.example.myapplication.domain.abstractions.Race
 
 open class Champion(
     val name: String,
-    val archetype: Archetype,
     val race: Race,
+    val archetype: Archetype
 ) {
     companion object {
         fun createChampion(
             name: String,
-            archetypeFactory: IArchetypeFactory<out Archetype>,
             race: Race,
-            diceType: String,
-            heroicAttributes: List<Int>? = null
+            archetype: Archetype
         ): Champion? {
-            val archetype = archetypeFactory.createArchetype(diceType, heroicAttributes) ?: return null
-            return Champion(name, archetype, race)
+
+            return Champion(name, race, archetype)
         }
     }
 

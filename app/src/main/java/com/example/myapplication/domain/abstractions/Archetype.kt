@@ -14,3 +14,9 @@ open class Archetype(
     val armors: MutableList<ArmorType>,
     val powers: MutableList<String>
 )
+
+enum class ArchetypeOptions {
+    ARCHER,
+    MAGE,
+    WARRIOR
+}

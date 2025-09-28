@@ -1,5 +1,9 @@
 package com.example.myapplication.domain.models
 
+import com.example.myapplication.domain.abstractions.Archetype
+import com.example.myapplication.domain.abstractions.ArchetypeOptions
+import com.example.myapplication.domain.abstractions.Race
+import com.example.myapplication.domain.abstractions.RaceOptions
 import com.example.myapplication.domain.entities.AttributeRollingModes
 
 data class ChampionCreationState(
@@ -11,6 +15,8 @@ data class ChampionCreationState(
     var intelligence: Int? = null,
     var wisdom: Int? = null,
     var charism: Int? = null,
+    var race: RaceOptions? = null,
+    var archetype: ArchetypeOptions? = null
 ) {
     companion object {
         @Volatile

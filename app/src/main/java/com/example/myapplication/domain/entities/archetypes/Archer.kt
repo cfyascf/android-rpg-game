@@ -1,7 +1,6 @@
 package com.example.myapplication.domain.entities.archetypes
 
 import com.example.myapplication.domain.abstractions.Archetype
-import com.example.myapplication.domain.abstractions.IArchetypeFactory
 import com.example.myapplication.domain.entities.ArmorType
 import com.example.myapplication.domain.entities.Dice
 import com.example.myapplication.domain.entities.WeaponType

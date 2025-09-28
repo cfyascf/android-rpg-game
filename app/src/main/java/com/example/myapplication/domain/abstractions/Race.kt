@@ -7,3 +7,9 @@ abstract class Race(
 ){
 
 }
+
+enum class RaceOptions {
+    DWARF,
+    ELF,
+    HUMAN
+}

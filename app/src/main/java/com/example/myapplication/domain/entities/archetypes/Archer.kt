@@ -15,4 +15,21 @@ class Archer(
     weapons: MutableList<WeaponType>,
     armors: MutableList<ArmorType>,
     powers: MutableList<String>
-) : Archetype(strength, dexterity, constitution, intelligence, wisdom, charism, weapons, armors, powers)
+) : Archetype(strength, dexterity, constitution, intelligence, wisdom, charism, weapons, armors, powers) {
+    companion object {
+        fun BuildArcher(
+            strength: Int, dexterity: Int, constitution: Int, intelligence: Int,
+            wisdom: Int, charism: Int
+        ): Archer {
+            val weapons = mutableListOf<WeaponType>(
+                WeaponType.CROSSBOW, WeaponType.BOW, WeaponType.SLING)
+
+            val armors = mutableListOf<ArmorType>(
+                ArmorType.NONE, ArmorType.MEDIUM, ArmorType.SHIELD
+            )
+
+            return Archer(strength, dexterity, constitution, intelligence,
+                wisdom, charism, weapons, null, armors)
+        }
+    }
+}

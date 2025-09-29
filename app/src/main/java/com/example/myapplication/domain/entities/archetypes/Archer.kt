@@ -1,8 +1,10 @@
 package com.example.myapplication.domain.entities.archetypes
 
+import android.health.connect.datatypes.units.Power
 import com.example.myapplication.domain.abstractions.Archetype
 import com.example.myapplication.domain.entities.ArmorType
 import com.example.myapplication.domain.entities.Dice
+import com.example.myapplication.domain.entities.Powers
 import com.example.myapplication.domain.entities.WeaponType
 
 class Archer(
@@ -14,7 +16,7 @@ class Archer(
     charism: Int,
     weapons: MutableList<WeaponType>,
     armors: MutableList<ArmorType>,
-    powers: MutableList<String>
+    powers: MutableList<Powers>
 ) : Archetype(strength, dexterity, constitution, intelligence, wisdom, charism, weapons, armors, powers) {
     companion object {
         fun BuildArcher(
@@ -28,8 +30,12 @@ class Archer(
                 ArmorType.NONE, ArmorType.MEDIUM, ArmorType.SHIELD
             )
 
+            val powers = mutableListOf<Powers>(
+                Powers.FLASH
+            )
+
             return Archer(strength, dexterity, constitution, intelligence,
-                wisdom, charism, weapons, null, armors)
+                wisdom, charism, weapons, armors, powers)
         }
     }
 }

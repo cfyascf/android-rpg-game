@@ -11,7 +11,11 @@ abstract class Race(
 ){
 
     companion object {
-        fun fromRaceOption(option: RaceOptions): Race {
+        fun fromRaceOption(option: RaceOptions?): Race {
+            if(option == null) {
+                return Elf()
+            }
+
             return when(option) {
                 RaceOptions.ELF -> Elf()
                 RaceOptions.DWARF -> Dwarf()

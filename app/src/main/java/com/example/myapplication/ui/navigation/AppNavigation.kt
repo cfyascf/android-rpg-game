@@ -9,6 +9,7 @@ import com.example.myapplication.ui.features.adventureattributerolling.Adventure
 import com.example.myapplication.ui.features.classicattributerolling.ClassicAttributeRollingScreen
 import com.example.myapplication.ui.features.heroicattributerolling.HeroicAttributeRollingScreen
 import com.example.myapplication.ui.features.namechampion.NameChampionScreen
+import com.example.myapplication.ui.features.reviewchampion.ReviewChampionScreen
 import com.example.myapplication.ui.features.selectarchetype.SelectArchetypeScreen
 import com.example.myapplication.ui.features.selectattributerollingmode.SelectAttributeRollingModeScreen
 import com.example.myapplication.ui.features.selectrace.SelectRaceScreen
@@ -89,6 +90,10 @@ fun AppNavigation() {
             SelectArchetypeScreen(onMoveToReviewChampionScreen = {
                 navController.navigate(Screen.ReviewChampion.route)
             })
+        }
+
+        composable(route = Screen.ReviewChampion.route) {
+            ReviewChampionScreen (onNavigateToGameScreen = {})
         }
     }
 }

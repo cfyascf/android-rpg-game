@@ -1,11 +1,23 @@
 package com.example.myapplication.domain.entities
 
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.example.myapplication.domain.abstractions.Archetype
 import com.example.myapplication.domain.abstractions.Race
 
+@Entity(tableName = "Champion")
 open class Champion(
+
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0,
+
     val name: String,
+
+    @Embedded
     val race: Race,
+
+    @Embedded
     val archetype: Archetype
 ) {
     companion object {
@@ -15,7 +27,7 @@ open class Champion(
             archetype: Archetype
         ): Champion? {
 
-            return Champion(name, race, archetype)
+            return Champion(name = name, race = race, archetype = archetype)
         }
     }
 

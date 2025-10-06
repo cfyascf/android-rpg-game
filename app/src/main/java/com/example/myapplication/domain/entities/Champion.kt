@@ -1,12 +1,23 @@
 package com.example.myapplication.domain.entities
 
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.example.myapplication.domain.abstractions.Archetype
 import com.example.myapplication.domain.abstractions.IArchetypeFactory
 import com.example.myapplication.domain.abstractions.Race
 
-open class Champion(
+@Entity(tableName = "Champion")
+data class Champion(
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0,
+
     val name: String,
+
+    @Embedded
     val archetype: Archetype,
+
+    @Embedded
     val race: Race,
 ) {
     companion object {
@@ -18,7 +29,7 @@ open class Champion(
             heroicAttributes: List<Int>? = null
         ): Champion? {
             val archetype = archetypeFactory.createArchetype(diceType, heroicAttributes) ?: return null
-            return Champion(name, archetype, race)
+            return Champion(name = name, archetype = archetype, race = race)
         }
     }
 

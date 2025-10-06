@@ -1,6 +1,6 @@
-// Em ui/screens/SelectAttributeRollingModeScreen.kt
+package com.example.myapplication.ui.features.selectarchetype
 
-package com.example.myapplication.ui.features.selectattributerollingmode
+import com.example.myapplication.ui.features.selectrace.SelectRaceViewModel
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -15,6 +15,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.myapplication.domain.abstractions.ArchetypeOptions
+import com.example.myapplication.domain.abstractions.RaceOptions
 import com.example.myapplication.domain.entities.AttributeRollingModes
 import com.example.myapplication.domain.models.ChampionCreationState
 import com.example.myapplication.ui.components.ModeSelectionButton
@@ -22,9 +24,9 @@ import com.example.myapplication.ui.components.RpgButton
 import com.example.myapplication.ui.theme.*
 
 @Composable
-fun SelectAttributeRollingModeScreen(
-    onMoveToModeSelectedScreen: (selectedMode: AttributeRollingModes) -> Unit) {
-    val viewModel = remember { SelectAttributeRollingModeViewModel() }
+fun SelectArchetypeScreen(
+    onMoveToReviewChampionScreen: () -> Unit) {
+    val viewModel = remember { SelectArchetypeViewModel() }
 
     Box(
         modifier = Modifier
@@ -42,7 +44,7 @@ fun SelectAttributeRollingModeScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Select your preferred mode",
+                text = "Select your archetype",
                 style = MaterialTheme.typography.titleMedium,
                 textAlign = TextAlign.Center
             )
@@ -53,11 +55,11 @@ fun SelectAttributeRollingModeScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
-                AttributeRollingModes.entries.forEach { mode ->
+                ArchetypeOptions.entries.forEach { archetype ->
                     ModeSelectionButton(
-                        text = mode.toString(),
-                        isSelected = viewModel.selectedMode == mode,
-                        onClick = { viewModel.selectedMode = mode }
+                        text = archetype.toString(),
+                        isSelected = viewModel.selectedArchetype == archetype,
+                        onClick = { viewModel.selectedArchetype = archetype }
                     )
                 }
             }
@@ -65,9 +67,9 @@ fun SelectAttributeRollingModeScreen(
             Spacer(modifier = Modifier.height(48.dp))
 
             RpgButton(
-                text = "Start picking your attributes...",
-                onClick = { viewModel.selectModeAndMoveNext(viewModel.selectedMode, onMoveToModeSelectedScreen) },
-                enabled = viewModel.selectedMode != null
+                text = "Next...",
+                onClick = { viewModel.selectArchetypeAndMoveNext(viewModel.selectedArchetype, onMoveToReviewChampionScreen) },
+                enabled = viewModel.selectedArchetype != null
             )
         }
     }
@@ -75,8 +77,8 @@ fun SelectAttributeRollingModeScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun SelectAttributeRollingModeScreenPreview() {
+fun SelectArchetypeScreenPreview() {
     MyApplicationTheme {
-        SelectAttributeRollingModeScreen(onMoveToModeSelectedScreen = {})
+        SelectArchetypeScreen(onMoveToReviewChampionScreen = {})
     }
 }

@@ -1,6 +1,4 @@
-// Em ui/screens/SelectAttributeRollingModeScreen.kt
-
-package com.example.myapplication.ui.features.selectattributerollingmode
+package com.example.myapplication.ui.features.selectrace
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -15,6 +13,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.myapplication.domain.abstractions.RaceOptions
 import com.example.myapplication.domain.entities.AttributeRollingModes
 import com.example.myapplication.domain.models.ChampionCreationState
 import com.example.myapplication.ui.components.ModeSelectionButton
@@ -22,9 +21,9 @@ import com.example.myapplication.ui.components.RpgButton
 import com.example.myapplication.ui.theme.*
 
 @Composable
-fun SelectAttributeRollingModeScreen(
-    onMoveToModeSelectedScreen: (selectedMode: AttributeRollingModes) -> Unit) {
-    val viewModel = remember { SelectAttributeRollingModeViewModel() }
+fun SelectRaceScreen(
+    onMoveToSelectArchetypeScreen: () -> Unit) {
+    val viewModel = remember { SelectRaceViewModel() }
 
     Box(
         modifier = Modifier
@@ -42,7 +41,7 @@ fun SelectAttributeRollingModeScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Select your preferred mode",
+                text = "Select your race",
                 style = MaterialTheme.typography.titleMedium,
                 textAlign = TextAlign.Center
             )
@@ -53,11 +52,11 @@ fun SelectAttributeRollingModeScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
-                AttributeRollingModes.entries.forEach { mode ->
+                RaceOptions.entries.forEach { race ->
                     ModeSelectionButton(
-                        text = mode.toString(),
-                        isSelected = viewModel.selectedMode == mode,
-                        onClick = { viewModel.selectedMode = mode }
+                        text = race.toString(),
+                        isSelected = viewModel.selectedRace == race,
+                        onClick = { viewModel.selectedRace = race }
                     )
                 }
             }
@@ -65,9 +64,9 @@ fun SelectAttributeRollingModeScreen(
             Spacer(modifier = Modifier.height(48.dp))
 
             RpgButton(
-                text = "Start picking your attributes...",
-                onClick = { viewModel.selectModeAndMoveNext(viewModel.selectedMode, onMoveToModeSelectedScreen) },
-                enabled = viewModel.selectedMode != null
+                text = "Next...",
+                onClick = { viewModel.selectRaceAndMoveNext(viewModel.selectedRace, onMoveToSelectArchetypeScreen) },
+                enabled = viewModel.selectedRace != null
             )
         }
     }
@@ -75,8 +74,8 @@ fun SelectAttributeRollingModeScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun SelectAttributeRollingModeScreenPreview() {
+fun SelectRaceScreenPreview() {
     MyApplicationTheme {
-        SelectAttributeRollingModeScreen(onMoveToModeSelectedScreen = {})
+        SelectRaceScreen(onMoveToSelectArchetypeScreen = {})
     }
 }

@@ -15,5 +15,9 @@ class Game {
             return INSTANCE
         }
     }
-    val champion: Champion? = null
+    private var _champion: Champion? = null
+
+    fun setChampion(champion: Champion) {
+        _champion = champion
+    }
 }

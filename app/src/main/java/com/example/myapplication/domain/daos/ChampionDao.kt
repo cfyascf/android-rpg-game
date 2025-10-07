@@ -21,7 +21,7 @@ interface ChampionDao {
     suspend fun delete(user: Champion)
 
     @Query("SELECT * FROM Champion WHERE id = :championId")
-    fun getChampionById(championId: Long): Flow<Champion>
+    fun getChampionById(championId: Long): Flow<Champion?>
 
     @Query("SELECT * FROM Champion ORDER BY name ASC")
     fun getAllChampions(): Flow<List<Champion>>

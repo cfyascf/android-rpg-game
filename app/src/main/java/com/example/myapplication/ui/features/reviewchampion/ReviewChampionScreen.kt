@@ -15,15 +15,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.myapplication.ui.components.RpgButton
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
 @Composable
 fun ReviewChampionScreen(
+    viewModel: ReviewChampionViewModel = viewModel(),
     onNavigateToGameScreen: () -> Unit
 ) {
-    val viewModel = remember { ReviewChampionViewModel() }
-
     Box(
         modifier = Modifier
             .fillMaxSize()

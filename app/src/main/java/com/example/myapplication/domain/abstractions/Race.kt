@@ -3,12 +3,13 @@ package com.example.myapplication.domain.abstractions
 import com.example.myapplication.domain.entities.races.Dwarf
 import com.example.myapplication.domain.entities.races.Elf
 import com.example.myapplication.domain.entities.races.Human
+import kotlinx.serialization.Serializable
 
-abstract class Race(
-    var moviment: Int,
-    var infravision: Int,
-    var alignment: String
-){
+@Serializable
+abstract class Race {
+    abstract var moviment: Int
+    abstract var infravision: Int
+    abstract var alignment: String
 
     companion object {
         fun fromRaceOption(option: RaceOptions?): Race {

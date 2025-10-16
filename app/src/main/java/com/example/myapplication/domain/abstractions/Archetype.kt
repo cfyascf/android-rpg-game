@@ -6,18 +6,19 @@ import com.example.myapplication.domain.entities.WeaponType
 import com.example.myapplication.domain.entities.archetypes.Archer
 import com.example.myapplication.domain.entities.archetypes.Mage
 import com.example.myapplication.domain.entities.archetypes.Warrior
+import kotlinx.serialization.Serializable
 
-abstract class Archetype(
-    val strength: Int,
-    val dexterity: Int,
-    val constitution: Int,
-    val intelligence: Int,
-    val wisdom: Int,
-    val charisma: Int,
-    val weapons: MutableList<WeaponType>,
-    val armors: MutableList<ArmorType>,
-    val powers: MutableList<Powers>
-) {
+@Serializable
+abstract class Archetype {
+    abstract var strength: Int
+    abstract var dexterity: Int
+    abstract var constitution: Int
+    abstract var intelligence: Int
+    abstract var wisdom: Int
+    abstract var charism: Int
+    abstract var weapons: MutableList<WeaponType>
+    abstract var armors: MutableList<ArmorType>
+    abstract var powers: MutableList<Powers>
     companion object {
         fun fromArchetypeOption(
             option: ArchetypeOptions, strength: Int, dexterity: Int,

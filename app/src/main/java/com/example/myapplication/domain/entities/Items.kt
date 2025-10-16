@@ -1,5 +1,8 @@
 package com.example.myapplication.domain.entities
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class WeaponType {
     SWORD,
     SHORT_SWORD,
@@ -13,6 +16,7 @@ enum class WeaponType {
     HAMMER
 }
 
+@Serializable
 enum class ArmorType {
     NONE,
     LIGHT,

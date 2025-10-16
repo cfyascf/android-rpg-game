@@ -14,10 +14,8 @@ open class Champion(
 
     val name: String,
 
-    @Embedded
     val race: Race,
 
-    @Embedded
     val archetype: Archetype
 ) {
     companion object {
@@ -38,7 +36,7 @@ open class Champion(
                 "constitution=${archetype.constitution}, " +
                 "intelligence=${archetype.intelligence}, " +
                 "wisdom=${archetype.wisdom}, " +
-                "charisma=${archetype.charisma}, " +
+                "charisma=${archetype.charism}, " +
                 "race=$race, " +
                 "archetype=${archetype::class.simpleName}" +
                 ")"

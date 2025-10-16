@@ -5,10 +5,15 @@ import com.example.myapplication.domain.entities.ArmorType
 import com.example.myapplication.domain.entities.Powers
 import com.example.myapplication.domain.entities.WeaponType
 import com.example.myapplication.domain.entities.archetypes.Archer
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
+@SerialName("Dwarf")
 class Dwarf(
-    moviment: Int = 6,
-    infravision: Int = 18,
-    alignment: String = "comply"): Race(moviment, infravision, alignment
-    ) {
+    override var moviment: Int = 6,
+    override var infravision: Int = 18,
+    override var alignment: String = "comply"
+): Race() {
+
 }

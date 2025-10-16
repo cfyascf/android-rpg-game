@@ -4,10 +4,15 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.example.myapplication.domain.converters.ArchetypeConverter
 import com.example.myapplication.domain.daos.ChampionDao
 import com.example.myapplication.domain.entities.Champion
+import com.example.myapplication.domain.converters.ItemConverter
+import com.example.myapplication.domain.converters.RaceConverter
 
 @Database(entities = [Champion::class], version = 1, exportSchema = false)
+@TypeConverters(RaceConverter::class, ArchetypeConverter::class, ItemConverter::class)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun championDao(): ChampionDao
 
